@@ -26,14 +26,18 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  // data from body (using body-parser)
+
+  const random = max => {
+    return (-1 * max / 2) + Math.random() * max;
+  }
+
   const stroke = req.body
   const newStroke = {}
   if (stroke.points) {
     newStroke.points = stroke.points.map(p => {
       return {
-        x: p.x + 10,
-        y: p.y + 50
+        x: p.x + random(40),
+        y: p.y + random(40)
       }
     })
   }
