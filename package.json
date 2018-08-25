@@ -1,0 +1,16 @@
+{
+  "name": "riffer-service",
+  "version": "1.0.0",
+  "description": "xyy",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://relang@acrux.uberspace.de/home/relang/riffer-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
