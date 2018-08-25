@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
 
   const random = max => {
-    return (-1 * max / 2) + Math.random() * max;
+    return Math.floor( (-1 * max / 2) + Math.random() * max )
   }
 
   const stroke = req.body
