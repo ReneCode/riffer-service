@@ -27,7 +27,17 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // data from body (using body-parser)
-  const name = req.body.name
+  const stroke = req.body
+  const newStroke = {}
+  if (stroke.points) {
+    newStroke.points = stroke.points.map(p => {
+      return {
+        x: p.x + 10,
+        y: p.y + 50
+      }
+    })
+  }
+  res.json(newStroke)
 })
 
 module.exports = router

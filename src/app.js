@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const ordersRoutes = require('./routes/orders')
+const strokesRoute = require('./routes/strokes')
 
 const app = express()
 
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/orders', ordersRoutes)
+app.use('/api/strokes', strokesRoute)
 
 // route not handled - handler ;-)
 app.use((req, res, next) => {
