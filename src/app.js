@@ -1,7 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const HttpStatus = require('http-status-codes')
+
 const strokesRoute = require('./routes/strokes')
+const configRoute = require('./routes/config')
 
 const app = express()
 
@@ -19,18 +22,19 @@ app.use((req, res, next) => {
 })
 
 app.use('/api/strokes', strokesRoute)
+app.use('/api/config', configRoute)
 
 // route not handled - handler ;-)
 app.use((req, res, next) => {
   const error = new Error('Not found')
-  error.status = 404
+  error.status = HttpStatus.NOT_FOUND
   next(error)
 })
 
 // error handling - should be the last use
 app.use((error, req, res, next) => {
   // catches all errors of the app
-  res.status(error.status || 500)
+  res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR)
   res.json({
     error: {
       message: 'sorry - some error happens'

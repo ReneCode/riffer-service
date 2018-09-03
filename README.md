@@ -39,3 +39,9 @@ svc -du ~/service/myProject
 
 echo "finished"
 ````
+
+# sound on android
+  http://masterex.github.io/archive/2012/05/28/android-audio-synthesis.html
+
+  https://stackoverflow.com/questions/6018824/play-a-sound-every-n-milliseconds
+  
