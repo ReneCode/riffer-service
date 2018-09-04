@@ -25,23 +25,41 @@ router.get('/:id', (req, res) => {
   }
 })
 
+// req can be array or single object
 router.post('/', (req, res) => {
 
   const random = max => {
     return Math.floor( (-1 * max / 2) + Math.random() * max )
   }
 
-  const stroke = req.body
-  const newStroke = {}
-  if (stroke.points) {
-    newStroke.points = stroke.points.map(p => {
+  const modifyStroke = stroke => {
+    if (stroke.points) {
+      const points = stroke.points.map(p => {
+        return {
+          x: p.x + random(40),
+          y: p.y + random(40)
+        }
+      })
       return {
-        x: p.x + random(40),
-        y: p.y + random(40)
+        ...stroke,
+        points
       }
-    })
+    } else {
+      return stroke
+    }
   }
-  res.json(newStroke)
+
+  const input = req.body;
+  let result;
+  if (Array.isArray(input)) {
+    result = input.map(stroke => {
+      return modifyStroke(stroke);
+    })
+  } else {
+    result = modifyStroke(input);
+  }
+
+  res.json(result)
 })
 
 module.exports = router
