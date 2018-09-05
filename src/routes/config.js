@@ -4,8 +4,8 @@ const router = express.Router()
 
 const config =
 {
-  drawDuration: 6,
-  paintDuration: 2
+  drawDuration: 6000,
+  paintDuration: 1500
 }
 
 // get configuration
