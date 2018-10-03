@@ -2,12 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const HttpStatus = require("http-status-codes");
+const cors = require("cors");
 
 const strokesRoute = require("./routes/strokes");
 const configRoute = require("./routes/config");
 const devicesRoute = require("./routes/devices");
 
 const app = express();
+
+app.use(cors());
 
 // logging, should be the first app.use
 app.use(morgan("dev"));
