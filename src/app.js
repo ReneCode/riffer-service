@@ -28,6 +28,10 @@ app.use((req, res, next) => {
 app.use("/api/devices", devicesRoute);
 app.use("/api/strokes", strokesRoute);
 app.use("/api/config", configRoute);
+app.use("/env", (req, res) => {
+  const env = process.env;
+  res.json(env);
+});
 
 // route not handled - handler ;-)
 app.use((req, res, next) => {
